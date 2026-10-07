@@ -809,7 +809,7 @@ void canvas_finderror(const void *error_object) {}
 void canvas_setcursor(t_canvas *x, unsigned int cursornum) {}
 void canvas_setgraph(t_glist *x, int flag, int nogoprect) {}
 int canvas_hitbox(t_canvas *x, t_gobj *y, int xpos, int ypos,
-    int *x1p, int *y1p, int *x2p, int *y2p, int extrapix)
+    int *x1p, int *y1p, int *x2p, int *y2p)
 {
     (void)x;
     (void)y;
@@ -819,7 +819,6 @@ int canvas_hitbox(t_canvas *x, t_gobj *y, int xpos, int ypos,
     (void)y1p;
     (void)x2p;
     (void)y2p;
-    (void)extrapix;
     return (0);
 }
 void canvas_restoreconnections(t_canvas *x) {}

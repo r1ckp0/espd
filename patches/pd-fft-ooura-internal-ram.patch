@@ -1,11 +1,12 @@
 diff --git a/src/d_fft_fftsg.c b/src/d_fft_fftsg.c
-index a5b68ffe..a59cbeb3 100644
+index 2b4f5649..36b18979 100644
 --- a/src/d_fft_fftsg.c
 +++ b/src/d_fft_fftsg.c
-@@ -28,6 +28,28 @@ for another, more permissive-sounding copyright notice.  -MSP
- #define FFTFLT double
- #endif
+@@ -25,6 +25,28 @@ for another, more permissive-sounding copyright notice.  -MSP
+ #include "m_private_utils.h"
  
+ #define FFTFLT double
++
 +#if defined(ESP_PLATFORM)
 +#include "esp_heap_caps.h"
 +/* Ooura's working set is touched every sample of rdft(); keep it in internal
@@ -27,11 +28,10 @@ index a5b68ffe..a59cbeb3 100644
 +#define ooura_getbytes(n) t_getbytes(n)
 +#define ooura_freebytes(p, n) t_freebytes(p, n)
 +#endif
-+
  static void cdft(int, int, FFTFLT *, int *, FFTFLT *);
  static void rdft(int, int, FFTFLT *, int *, FFTFLT *);
  
-@@ -86,12 +108,12 @@ static int ooura_init( int n)
+@@ -83,12 +105,12 @@ static int ooura_init( int n)
      {
          if (ooura_maxn)
          {
@@ -48,7 +48,7 @@ index a5b68ffe..a59cbeb3 100644
          ooura_bitrev[0] = 0;
          if (!ooura_bitrev)
          {
-@@ -99,20 +121,20 @@ static int ooura_init( int n)
+@@ -96,20 +118,20 @@ static int ooura_init( int n)
              ooura_maxn = 0;
              return (0);
          }
@@ -74,7 +74,7 @@ index a5b68ffe..a59cbeb3 100644
              ooura_maxn = 0;
              return (0);
          }
-@@ -126,9 +148,9 @@ static void ooura_term( void)
+@@ -123,9 +145,9 @@ static void ooura_term( void)
  {
      if (!ooura_maxn)
          return;
